@@ -180,15 +180,18 @@
 ---
 
 ### Entry 4 - [Date and Time]
-**What I did**:
+**What I did**: add context switch counter.
 
 **Details**:
+- declared a static counter at the top of SchedulerSimulatoin class.
+- Inside the main execution while (!processQueue.isEmpty()) loop, every time a process is pulled from the queue to run, the counter increment.
+- add a print statment at the end of simulatoin loop that print the the total context switch.
 
-**Challenges**:
+**Challenges**: use a color to print at the counter in the end.
 
-**Solution**:
+**Solution**: use AI to know how to do this.
 
-**Time spent**:
+**Time spent**: 0:30 hour.
 
 ---
 
