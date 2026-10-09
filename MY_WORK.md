@@ -129,16 +129,19 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
+### Entry 1 - [October 6, 2026, 10:00 am]
+**What I did**: creat an account and forked the repository.
 
-**Details**:
+**Details**: 
+- creat an account in GitHub.
+- forked the repository.
+- rename the forked to my name.
 
-**Challenges**:
+**Challenges**: the firt time to work in GitHub.
 
-**Solution**:
+**Solution**: watch a video which discuss how to creat an account and to use GitHub.
 
-**Time spent**:
+**Time spent**: 1 hour.
 
 ---
 
