@@ -37,7 +37,7 @@ class Process implements Runnable {
         this.burstTime = burstTime;
         this.timeQuantum = timeQuantum;
         this.remainingTime = burstTime; // Initially, remaining time is equal to the burst time
-        this.priority = random.nextInt(10) + 1; // Random priority between 1 and 10
+        this.priority = new Random().nextInt(10) + 1; // Random priority between 1 and 10
     }
 
     // This method will be called when the thread for this process is started
