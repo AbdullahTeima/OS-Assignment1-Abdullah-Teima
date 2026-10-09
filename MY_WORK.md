@@ -158,16 +158,20 @@
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 3 - [October 9, 2026, 7:00 pm]
+**What I did**: add the priority.
 
-**Details**:
+**Details**: 
+- add priority field in process class.
+- update process constructor to accept random object and assign a random integer between 1 and 10.
+- add get method of priority field.
+- inside the addProcessToQueue method, update the print statment to show the priority when the process eters the ready queue.
 
-**Challenges**:
+**Challenges**: add the print statment in addProcessToQueue method with color.
 
-**Solution**:
+**Solution**: using AI to show how it add.
 
-**Time spent**:
+**Time spent**: 1 houre.
 
 ---
 
