@@ -145,16 +145,20 @@
 
 ---
 
-### Entry 2 - [Date and Time]
-**What I did**:
+### Entry 2 - [October 6, 2026, 9:00 pm]
+**What I did**: read the README.md .
 
-**Details**:
+**Details**: 
+- read insruction about the assignment in README.md .
+- doawnload visual stadio to edit the code in it.
+- combine VS with GitHub.
+- doawnload the JDK to run the code.
 
-**Challenges**:
+**Challenges**: how to combine the visual stadio whith GitHub - the instruction is too large. 
 
-**Solution**:
+**Solution**: sarch, see a video and ask a student.
 
-**Time spent**:
+**Time spent**: 3 hours.
 
 ---
 
