@@ -2,8 +2,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Random;
 
 // ANSI Color Codes for enhanced terminal output
@@ -358,8 +360,9 @@ public class SchedulerSimulation {
         System.out.printf("%-15s %-12s %-15s %-18s%n", "Process Name", "Burst Time", "Waiting Time", "Turnaround Time");
         System.out.println("----------------------------------------------------------------------");
 
-        for (Process p: processes) {
-            processes.sort(Comparator.comparing(Process::getName));
+        List<Process> sortedProcesses = new ArrayList(new LinkedHashSet<>(processes));
+        sortedProcesses.sort(Comparator.comparingInt(p -> Integer.parseInt(p.getName().substring(1)))); // Sort by process number (P1, P2, ...)
+        for (Process p: sortedProcesses) {
             System.out.printf("%-15s %-12s %-15s %-18s%n",
             p.getName(),
             p.getBurstTime() + "ms", 
