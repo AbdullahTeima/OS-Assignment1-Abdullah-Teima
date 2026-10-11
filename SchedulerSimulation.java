@@ -2,6 +2,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Map;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -312,6 +313,8 @@ public class SchedulerSimulation {
         System.out.println(Colors.BOLD + Colors.BRIGHT_CYAN + "\n========================================" + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + "Total Context Switches: " + contextSwitchCount + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.BRIGHT_CYAN + "========================================\n" + Colors.RESET);
+
+        printSummaryTable(processMap.values().stream().toList()); // Print the final summary table of all processes
         
         // End of the scheduler simulation
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + 
@@ -356,6 +359,7 @@ public class SchedulerSimulation {
         System.out.println("----------------------------------------------------------------------");
 
         for (Process p: processes) {
+            processes.sort(Comparator.comparing(Process::getName));
             System.out.printf("%-15s %-12s %-15s %-18s%n",
             p.getName(),
             p.getBurstTime() + "ms", 

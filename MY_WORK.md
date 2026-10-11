@@ -179,7 +179,7 @@
 
 ---
 
-### Entry 4 - [Date and Time]
+### Entry 4 - [October 10, 2026, 1:00 am]
 **What I did**: add context switch counter.
 
 **Details**:
@@ -195,16 +195,21 @@
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**:
+### Entry 5 - [Ocrober 10, 2026, 2:00 pm]
+**What I did**: add waiting and turnaround time tracking
 
 **Details**:
+- add a field in process class (arrivalTime, waitingTime, turnaroundTime, completionTime).
+- indide addProcessToQueue method, add the arrivale time by using system time.
+- compute turnaroundTime and waitingTime inside both run and runToCompletion method.
+- add a method in the end of main to print summery table of all process.
+- call the method at the end of main.
 
-**Challenges**:
+**Challenges**: sort the processes in table and ensure it appearce only one on table.
 
-**Solution**:
+**Solution**: call a method in the bigineng of the print statment
 
-**Time spent**:
+**Time spent**: 1 houre.
 
 ---
 
