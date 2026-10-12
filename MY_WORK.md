@@ -230,13 +230,13 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: [9 hours]
 
-**Most challenging part**:
+**Most challenging part**: this the first time to use gitHub so this is the challange which can summarize in (sign up in gitHub and forked the reposetory ,link gitHub whit VS code and modify the code in there)
 
-**Most interesting learning**:
+**Most interesting learning**: using gitHub and modifing the code in VS code.
 
-**What I would do differently next time**:
+**What I would do differently next time**: make aprogram and commit in gitHub.
 
 ---
 
