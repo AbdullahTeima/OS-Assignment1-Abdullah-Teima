@@ -33,7 +33,11 @@ class Process implements Runnable {
     private int burstTime; // Total time the process requires to complete (in milliseconds)
     private int timeQuantum; // Time slice (time quantum) allowed per CPU access (in milliseconds)
     private int remainingTime; // Time left for the process to finish its execution
-    private int priority; // Priority of the process 
+    
+    // Feature 1: Priority of the process.
+    private int priority; 
+
+    // Feature 3: Track arrival, completion, waiting, and turnaround times for performance metrics
     private long arrivalTime;
     private long completionTime;
     private long waitingTime;
@@ -45,7 +49,8 @@ class Process implements Runnable {
         this.burstTime = burstTime;
         this.timeQuantum = timeQuantum;
         this.remainingTime = burstTime; // Initially, remaining time is equal to the burst time
-        this.priority = new Random().nextInt(10) + 1; // Random priority between 1 and 10
+        // Feature 1: Random priority between 1 and 10
+        this.priority = new Random().nextInt(10) + 1; 
     }
 
     // This method will be called when the thread for this process is started
@@ -95,6 +100,7 @@ class Process implements Runnable {
                               " yields CPU for context switch" + Colors.RESET);
         } else {
 
+            // Feature 3: Calculate completion, turnaround, and waiting times
             this.completionTime = System.currentTimeMillis(); 
             this.turnaroundTime = this.completionTime - this.arrivalTime;
             this.waitingTime = Math.max(0 , this.turnaroundTime - this.burstTime);
@@ -132,7 +138,7 @@ class Process implements Runnable {
             Thread.sleep(remainingTime); // Run until completion
             remainingTime = 0; // Mark the process as completed
 
-            // Calculate completion, turnaround, and waiting times
+            // Feature 3: Calculate completion, turnaround, and waiting times
             this.completionTime = System.currentTimeMillis();
             this.turnaroundTime = this.completionTime - this.arrivalTime;
             this.waitingTime = Math.max(0 , this.turnaroundTime - this.burstTime);
@@ -158,7 +164,7 @@ class Process implements Runnable {
         return remainingTime;
     }
 
-    // Getter method for process priority
+    // Feature 1: Getter method for process priority
     public int getPriority() {
         return priority;
     }
@@ -187,7 +193,8 @@ class Process implements Runnable {
 
 public class SchedulerSimulation {
 
-    private static int contextSwitchCount = 0; // Counter to track the number of context switches
+    // Feature 2: Counter to track the number of context switches.
+    private static int contextSwitchCount = 0; 
     public static void main(String[] args) {
         // ⚠️ IMPORTANT: Put your student ID here to seed the random number generator
         // This makes your output unique to you - DO NOT forget to change this!
@@ -264,7 +271,8 @@ public class SchedulerSimulation {
             // Get the next thread from the queue (FIFO)
             Thread currentThread = processQueue.poll(); // Dequeues the next thread
 
-            contextSwitchCount++; // Increment the context switch counter.
+            // Feature 2: Increment the context switch counter.
+            contextSwitchCount++; 
             
             // Print the current process queue (list of process IDs in the queue)
             System.out.println(Colors.BOLD + Colors.MAGENTA + "┌─ Ready Queue " + "─".repeat(65) + Colors.RESET);
@@ -311,7 +319,7 @@ public class SchedulerSimulation {
             }
         }
 
-        // Print the total number of context switches that occurred during the simulation
+        // Feature 2: Print the total number of context switches that occurred during the simulation
         System.out.println(Colors.BOLD + Colors.BRIGHT_CYAN + "\n========================================" + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + "Total Context Switches: " + contextSwitchCount + Colors.RESET);
         System.out.println(Colors.BOLD + Colors.BRIGHT_CYAN + "========================================\n" + Colors.RESET);
@@ -335,7 +343,7 @@ public class SchedulerSimulation {
     public static void addProcessToQueue(Process process, Queue<Thread> processQueue, 
                                         Map<Thread, Process> processMap) {
         
-        // Set the arrival time of the process to the current system time                                    
+        // Feature 3: Set the arrival time of the process to the current system time                                    
         process.setArrivalTime(System.currentTimeMillis());                                    
 
         // Create a new thread to run the process
@@ -351,9 +359,11 @@ public class SchedulerSimulation {
         System.out.println(Colors.BLUE + "  ➕ " + Colors.BOLD + Colors.CYAN + process.getName() + 
                           Colors.RESET + Colors.BLUE + " added to ready queue" + Colors.RESET + 
                           " │ Burst time: " + Colors.YELLOW + process.getBurstTime() + "ms" + 
-                          Colors.RESET + " │ Priority: " + Colors.BRIGHT_YELLOW + process.getPriority() + Colors.RESET);                  
+                          Colors.RESET + " │ Priority: " + Colors.BRIGHT_YELLOW + process.getPriority() + Colors.RESET);
+                          // Feature 1: Print the priority of the process when it is added to the queue                  
     }
 
+    // Feature 3: Method to print a summary table of all processes with their performance metrics
     private static void printSummaryTable(List<Process> processes) {
         System.out.println(Colors.BOLD + Colors.BRIGHT_YELLOW + "FINAL SCHEDULING PERFORMANCE TABLE" + Colors.RESET);
         System.out.println("----------------------------------------------------------------------");

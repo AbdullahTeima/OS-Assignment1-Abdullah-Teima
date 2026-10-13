@@ -213,16 +213,16 @@
 
 ---
 
-### Entry 6 - [Optional - Date and Time]
-**What I did**:
+### Entry 6 - [October 13, 2026, 10:00 pm]
+**What I did**: complete the MY_WORK.md file.
 
-**Details**:
+**Details**: answer the question (part b and c) reflection and technical answer.
 
-**Challenges**:
+**Challenges**: Understanding complex multithreading and operating system concepts deeply enough to write clear, well-structured technical answers and reflections that fit the strict sentence count requirements.
 
-**Solution**:
+**Solution**: Used AI as a personal tutor to explain the concepts step-by-step, clarify how the scheduler logic worked, and help refine my answers into clear, properly formatted English sentences.
 
-**Time spent**:
+**Time spent**: 2 hours.
 
 ---
 
@@ -256,7 +256,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[Working with Java multithreading highlighted how core concurrency mechanisms govern process execution. Implementing the Runnable interface and instantiating threads via new Thread(process) provides a clear blueprint for managing separate tasks, while calling Thread.start() transitions them into active CPU states. Simulating work using Thread.sleep() offers tangible visibility into how time quanta slice processor allocation. Furthermore, utilizing Thread.join() ensures that the main scheduler thread properly waits for each active quantum to conclude before advancing. It was particularly surprising to see how seamlessly the Java Virtual Machine coordinates dozens of concurrent threads while maintaining precise control over execution order and timing.]
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -264,7 +264,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[The most challenging part of this assignment for me was not the Java code itself, but rather signing into GitHub and successfully linking my repository to Visual Studio Code. Dealing with authentication tokens, credential prompts, and Git extensions in the IDE caused unexpected roadblocks right at the start. As someone who was still getting familiar with version control integration, configuring the remote origin and pushing my initial commits felt quite confusing. I ran into authentication errors when trying to sync my local changes, which held up my progress before I could even dive deeply into writing the scheduler code. Navigating through personal access tokens and permission settings required a lot of trial and error to get right. this is teach me a lot to use the GitHub]
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -272,7 +272,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[To overcome the Git authentication and VS Code integration roadblocks I faced at the beginning, I combined online research with peer support. First, I watched a helpful YouTube tutorial on connecting GitHub to Visual Studio Code, which walked me through the step-by-step process of handling personal access tokens. When I still encountered errors while trying to push my commits, I reached out to a fellow student in my class who helped me troubleshoot my remote repository settings. By comparing notes and testing small changes to my credentials, I was finally able to establish a stable connection between my IDE and GitHub. This collaborative approach not only resolved my technical issues but also gave me a clearer understanding of version control workflows.]
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
@@ -280,7 +280,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+[The multithreading concepts explored in this CPU scheduler simulation apply directly to everyday software applications like web browsers and mobile apps. For instance, a modern web browser utilizes multiple concurrent threads to load web pages, render graphics, and handle user inputs simultaneously. Just like our queue-based scheduler managed multiple processes through timed execution slices, a browser coordinates background tasks so that the user interface remains responsive and never freezes. Similarly, a media player application uses distinct threads to decode video frames, stream audio data, and process remote control inputs concurrently. The core principles of thread execution flow and task management that I implemented in Java ensure that these heavy applications run smoothly without resource starvation. Ultimately, understanding these underlying mechanics bridges the gap between basic programming and building high-performance, real-world software.]
 
 ### Optional: What would you like to learn more about?
 
@@ -312,7 +312,7 @@
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[A process represents an independent execution environment with its own dedicated memory space, whereas a thread is a lightweight unit of execution that exists within a process and shares its memory. In our program, the class named Process acts as a simulated process model, while actual execution is driven by real Java threads wrapping those processes via the line new Thread(process) inside addProcessToQueue(). We used threads instead of separate operating system processes because threads have lower creation overhead and allow fast communication through shared memory within the same Java Virtual Machine.]
 
 ## Question 2: Ready Queue Behavior
 
@@ -324,15 +324,20 @@
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+[In Round-Robin scheduling, when a process does not finish within its allocated time quantum, its remaining time is updated and it yields the CPU to be re-queued at the back of the ready queue. This re-queueing mechanism is essential for system fairness because it prevents long-running processes from monopolizing the CPU, ensuring that every process receives an equal opportunity to execute. In my simulation output, process P4 had a total burst time of 4810ms and was re-queued multiple times until its remaining time reached 0ms.]
 
 Example from my output:
 ```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+[⚡ P4 executing quantum [2000ms] 
+  ⏸ P4 completed quantum 2000ms │ Overall progress: [████████░░░░░░░░░░░░] 41%
+     Remaining time: 2810ms
+  ↻ P4 yields CPU for context switch
+
+  ➕ P4 added to ready queue │ Burst time: 4810ms │ Priority: 4]
 ```
 
 **Explanation of example:**
-[Explain what is happening in the output snippet you pasted.]
+[The output shows process P4 executing for its maximum allowed 2000ms time quantum. Because it still had 2810ms of remaining execution time, it yielded the CPU during a context switch and was re-added to the ready queue to wait for its next slice of processor time.]
 
 ## Question 3: Thread Lifecycle
 
@@ -342,15 +347,15 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences overall; one short explanation per state)*
 
-1. **New**: [When is P1 in the New state?]
+1. **New**: [P1 enters the new state when new Thread(process) is created inside addProcessToQueue()]
 
-2. **Runnable**: [When does P1 become Runnable?]
+2. **Runnable**: [P1 becomes runnable when currentThread.start() is called in the scheduler loop]
 
-3. **Running**: [When is P1 Running?]
+3. **Running**: [P1 is running when its run() method executes its time slice on the CPU]
 
-4. **Waiting**: [When and why would a thread be Waiting?]
+4. **Waiting**: [P1 enters waiting during Thread.sleep() in its run loop, while the main thread waits via currentThread.join()]
 
-5. **Terminated**: [When is P1 Terminated?]
+5. **Terminated**: [P1 is terminated after its remaining burst time reaches zero and its execution finishes]
 
 ## Question 4: Real-World Applications
 
@@ -360,32 +365,32 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences per example)*
 
-### Example 1 (operating-system level): [Name of scenario]
+### Example 1 (operating-system level): [Desktop Operating System CPU Scheduler]
 
 **Description**:
-[Describe the real-world scenario.]
+[An operating system handles multiple active applications (such as a web browser, media player, and background compiler) simultaneously by allocating CPU time slices to each running program thread. In this scenario, the individual applications act like our simulated processes, the OS scheduling interval serves as the time quantum, and saving/restoring CPU registers acts as the context switch.]
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+[Round-Robin fits this OS-level scenario because it guarantees absolute fairness and high interactivity. By continuously rotating the CPU among active applications, it prevents any single heavy program from freezing the system, ensuring that the user interface remains responsive and smooth.]
 
-### Example 2: [Name of application/scenario]
+### Example 2: [Multi-User Web Server Request Handling]
 
 **Description**:
-[Describe the real-world scenario or application.]
+[A high-traffic web server managing multiple incoming client API requests concurrently uses worker threads to process short data chunks in a shared queue. Here, the incoming client requests play the role of the processes, the maximum execution time window acts as the time quantum, and task swapping mimics the context switch.]
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+[Round-Robin ensures predictable responsiveness and prevents starvation in web servers. It guarantees that a large file download or heavy database query cannot block quick web requests, allowing all connected clients to receive timely responses.]
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1. Round-Robin
+2. Ready Queue
+3. Thread vs process
 
 **Concepts I need to study more:**
-1.
-2.
+1. Deadlock prevention.
+2. Advanced thread synchoronization.
 
 ---
 
